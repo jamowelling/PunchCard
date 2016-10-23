@@ -28,8 +28,30 @@ var service = tetra.startEnd()
    function uidFormat(uidArr) {
      var uid = uidArr.join("");
      console.log(uid);
+     fetch('https://loyaltyprogram.herokuapp.com/users', {
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      method: 'POST',
+      body: JSON.stringify(uid)
+    })
+    .then((response) => {
+      return response.json()})
+    .then((responseJson) => {
+      if (responseJson.covered === "yes") {
+        // render pay with loyalties page
+      } else if (responseJson.covered === "no") {
+        // render tap to pay
+      } else {
+        // render Your account has been created and rewards have been updated
+      }
+    })
+    .catch((error) => {
+      console.error(error);
+    });
    }
-   
+
    function isCustomerLoyal () {
      // Using our API
    }
