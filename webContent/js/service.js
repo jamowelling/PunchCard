@@ -41,6 +41,7 @@ var service = tetra.startEnd()
      }
    }
    
+   
 //   document.getElementById("opt-out").addEventListener("mouseup", function(e) {
 //     moveOn();
 //   });
@@ -116,6 +117,25 @@ var service = tetra.startEnd()
        .close()
        .disconnect()
    }
+   
+   function amIWaiting() {
+     $('#waiting').hasClass('hidden') ? false : true;
+   }
+   
+   function loadAnimation() {
+     // You know
+   }
+   
+   $(document).on({
+     ajaxStart: function() {
+       showView("waiting");
+       do {
+         loadAnimation();
+       } while amIWaiting();
+     },
+     ajaxStop: function() {
+     }
+   });
    
    contactLessService     
      .reset() // Reset service     
