@@ -7,25 +7,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
     <title>PunchCard</title>
     <!-- CSS -->
-    <!-- JS -->
+    <link rel="stylesheet" type="text/css" href="css/main.css">
   </head>
   
   <body>
     
-    <div id="on-start" class="">
+    <div id="listening">
       <div class="content">
         <div class="prompt">
           <p>Tap your card to snag some rewards</p>
           <!-- Instructional graphic here? -->
         </div>
+        <button id="the_button">Try Me</button>
+        <button>My card doesn't seem to be working :/</button>
+      </div>
+    </div>
+    
+    <div id="on-start" class="hidden">
+      <div class="content">
+        <div class="prompt">
+          <p>Tap your card to snag some rewards</p>
+          <!-- Instructional graphic here? -->
+        </div>
+        <button id="the_button">Try Me</button>
         <button>My card doesn't seem to be working :/</button>
       </div>
     </div>
     
   </body>
   
-  <script type='text/javascript' src='js/libs/tetra/tetra.js'></script>
-  <script type='text/javascript' src='js/StartEndService.js'></script>
-  <script type='text/javascript' src='js/PunchService.js'></script>
-  <script type='text/javascript' src='js/main.js'></script>
+  <script type='text/javascript' src='js/tetra.js'></script>
+  <script type='text/javascript' src='js/service.js'></script>
 </html>

@@ -1,4 +1,4 @@
-var tetra = require('./libs/tetra.js'); //includes the tetra library
+var tetra = require('./libs/tetra/tetra.js'), //includes the tetra library
 contactLessService = tetra.service({  //Instantiates service 
   service: 'local.device.contactless0', 
   namespace: 'ingenico.device.contactless'
@@ -17,18 +17,33 @@ function PunchService() {
   this._postCreate();
   
   // Pretty self-explanatory
-  this._grabUID();
+//  this._grabUID();
 }
 
 PunchService.prototype = new StartEndService();
 
-PunchService.prototype._grabUID = function() {
+//PunchService.prototype._grabUID = function() {
+//  
+//}
+
+PunchService.prototype._postCreate = function() {
   
-  contactLessService
-  .reset() // Reset service
-  .call('GetUid', { requestDelay: 0 }) // Call the GetUid method
-  .success(function(r) {
-    //Handle a successful UID retrieval
-    console.log(r);
-  })
+  document.getElementById("the_button").addEventListener( "mouseup", function() {
+    contactLessService
+      .reset() // Reset service
+      .call('GetUid', { requestDelay: 0 }) // Call the GetUid method
+      .success(function(r) {
+        //Handle a successful UID retrieval
+        console.log(r);
+        window.print();
+      });
+  });
+}
+
+PunchService.prototype.showView = function(viewID) {
+  var views = ["listening", "on-start", "on-end"];
+  
+  for(var v = 0; v < views.length; v++) {
+    document.getElementById(views[v]).className = (viewID == views[v] ? "" : "hidden");
+  }
 }
