@@ -56,17 +56,22 @@ var service = tetra.startEnd()
    function uidFormat(uidArr) {
      var uid = uidArr.join("");
      console.log(uid);
-     $.ajax({ url: 'https://loyaltyprogram.herokuapp.com/users',
-              accepts: {
-                dataType: 'application/json',
-              },
-              contentType: 'application/json',
-              method: 'POST',
-              data: JSON.stringify(uid),
-              success: function(r) { 
-                console.log("whatever");
-              } 
-     });
+     var xmlhttp = new XMLHttpRequest();
+     xmlhttp.open("POST", 'https://loyaltyprogram.herokuapp.com/users');
+     xmlhttp.setRequestHeader("Content-Type", "application/json");
+     xmlhttp.send(JSON.stringify({uid: uid}))
+       .then(console.log("success");
+//     $.ajax({ url: 'https://loyaltyprogram.herokuapp.com/users',
+//              accepts: {
+//                dataType: 'application/json',
+//              },
+//              contentType: 'application/json',
+//              method: 'POST',
+//              data: JSON.stringify(uid),
+//              success: function(r) { 
+//                console.log("whatever");
+//              } 
+//     });
 //     fetch('https://loyaltyprogram.herokuapp.com/users', {
 //      headers: {
 //        'Accept': 'application/json',
@@ -91,6 +96,7 @@ var service = tetra.startEnd()
 //    .catch((error) => {
 //      console.error(error);
 //    });
+     console.log("made it");
    }
 
    function isCustomerLoyal () {
@@ -119,23 +125,29 @@ var service = tetra.startEnd()
    }
    
    function amIWaiting() {
-     $('#waiting').hasClass('hidden') ? false : true;
+     return $('#waiting').hasClass('hidden') ? false : true;
    }
    
-   function loadAnimation() {
-     // You know
-   }
+   // stretch
    
-   $(document).on({
-     ajaxStart: function() {
-       showView("waiting");
-       do {
-         loadAnimation();
-       } while amIWaiting();
-     },
-     ajaxStop: function() {
-     }
-   });
+//   function loadAnimation() {
+//     // You know
+//     $('#P').animate({
+//       color: "black",
+//       transform: scale(0.95)
+//     })
+//   }
+//   
+//   $(document).on({
+//     ajaxStart: function() {
+//       showView("waiting");
+//       do {
+//         loadAnimation();
+//       } while amIWaiting();
+//     },
+//     ajaxStop: function() {
+//     }
+//   });
    
    contactLessService     
      .reset() // Reset service     

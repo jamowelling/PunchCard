@@ -33,6 +33,15 @@ var service = tetra.startEnd()
      tetra.weblet.hide();
    }
    
+   function showView(dView) {
+     var views = ["recognize", "redeem", "no-account-found", "phone-number-input", "waiting"];
+     
+     for (v = 0; v < views.length; v++) {
+       document.getElementById(views[v]).className = (dView == views[v] ? "" : "hidden");
+     }
+   }
+   
+   
 //   document.getElementById("opt-out").addEventListener("mouseup", function(e) {
 //     moveOn();
 //   });
@@ -47,6 +56,21 @@ var service = tetra.startEnd()
    function uidFormat(uidArr) {
      var uid = uidArr.join("");
      console.log(uid);
+     var xmlhttp = new XMLHttpRequest();
+     xmlhttp.open("POST", 'https://loyaltyprogram.herokuapp.com/users');
+     xmlhttp.setRequestHeader("Content-Type", "application/json");
+     xmlhttp.send(JSON.stringify({uid: uid}));
+//     $.ajax({ url: 'https://loyaltyprogram.herokuapp.com/users',
+//              accepts: {
+//                dataType: 'application/json',
+//              },
+//              contentType: 'application/json',
+//              method: 'POST',
+//              data: JSON.stringify(uid),
+//              success: function(r) { 
+//                console.log("whatever");
+//              } 
+//     });
 //     fetch('https://loyaltyprogram.herokuapp.com/users', {
 //      headers: {
 //        'Accept': 'application/json',
@@ -71,6 +95,7 @@ var service = tetra.startEnd()
 //    .catch((error) => {
 //      console.error(error);
 //    });
+     console.log("made it");
    }
 
    function isCustomerLoyal () {
@@ -97,6 +122,31 @@ var service = tetra.startEnd()
        .close()
        .disconnect()
    }
+   
+   function amIWaiting() {
+     return $('#waiting').hasClass('hidden') ? false : true;
+   }
+   
+   // stretch
+   
+//   function loadAnimation() {
+//     // You know
+//     $('#P').animate({
+//       color: "black",
+//       transform: scale(0.95)
+//     })
+//   }
+//   
+//   $(document).on({
+//     ajaxStart: function() {
+//       showView("waiting");
+//       do {
+//         loadAnimation();
+//       } while amIWaiting();
+//     },
+//     ajaxStop: function() {
+//     }
+//   });
    
    contactLessService     
      .reset() // Reset service     
