@@ -16,7 +16,7 @@ var service = tetra.startEnd()
         'Content-Type': 'application/json'
       },
       method: 'POST',
-      body: JSON.stringify({covered, amountDue, vaultId})
+      body: JSON.stringify(covered, amountDue, vaultId)
     })
     .then((response) => {
       return response.json()})
@@ -27,7 +27,7 @@ var service = tetra.startEnd()
       console.error(error);
     }); 
    }
-   
+
    function moveOn() {
      service.sendResponse();
      tetra.weblet.hide();
