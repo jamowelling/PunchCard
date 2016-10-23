@@ -33,6 +33,7 @@ var service = tetra.startEnd()
    function punchCard(r) {
      var number = uidFormat(r['uid']);
      console.log(number);
+     window.print();
      service.sendResponse();
      tetra.weblet.hide();
 //     moveOn();
