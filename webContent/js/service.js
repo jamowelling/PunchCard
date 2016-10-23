@@ -9,29 +9,38 @@ var service = tetra.startEnd()
  else {
   tetra.weblet.show();
    
-   function updateLoyaltyPoints(covered, amountDue, vaultID) {
-     fetch('https://loyaltyprogram.herokuapp.com/memberships', {
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      },
-      method: 'POST',
-      body: JSON.stringify(covered, amountDue, vaultId)
-    })
-    .then((response) => {
-      return response.json()})
-    .then((responseJson) => {
-      return responseJson.complete
-    })
-    .catch((error) => {
-      console.error(error);
-    }); 
-   }
+//   function updateLoyaltyPoints(covered, amountDue, vaultID) {
+//     fetch('https://loyaltyprogram.herokuapp.com/memberships', {
+//      headers: {
+//        'Accept': 'application/json',
+//        'Content-Type': 'application/json'
+//      },
+//      method: 'POST',
+//      body: JSON.stringify(covered, amountDue, vaultId)
+//    })
+//    .then((response) => {
+//      return response.json()})
+//    .then((responseJson) => {
+//      return responseJson.complete
+//    })
+//    .catch((error) => {
+//      console.error(error);
+//    }); 
+//   }
 
    function moveOn() {
      service.sendResponse();
      tetra.weblet.hide();
    }
+   
+   function showView(dView) {
+     var views = ["recognize", "redeem", "no-account-found", "phone-number-input", "waiting"];
+     
+     for (v = 0; v < views.length; v++) {
+       document.getElementById(views[v]).className = (dView == views[v] ? "" : "hidden");
+     }
+   }
+   
    
 //   document.getElementById("opt-out").addEventListener("mouseup", function(e) {
 //     moveOn();
@@ -47,30 +56,47 @@ var service = tetra.startEnd()
    function uidFormat(uidArr) {
      var uid = uidArr.join("");
      console.log(uid);
-     fetch('https://loyaltyprogram.herokuapp.com/users', {
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      },
-      method: 'POST',
-      body: JSON.stringify(uid)
-    })
-    .then((response) => {
-      return response.json()})
-    .then((responseJson) => {
-      if (responseJson.covered === "yes") {
-        // render pay with loyalties page
-        // send back covered, amount_due, vault_id
-
-      } else if (responseJson.covered === "no") {
-        // render tap to pay
-      } else {
-        // render Your account has been created and rewards have been updated
-      }
-    })
-    .catch((error) => {
-      console.error(error);
-    });
+     var xmlhttp = new XMLHttpRequest();
+     xmlhttp.open("POST", 'https://loyaltyprogram.herokuapp.com/users');
+     xmlhttp.setRequestHeader("Content-Type", "application/json");
+     xmlhttp.send(JSON.stringify({uid: uid}))
+       .then(console.log("success");
+//     $.ajax({ url: 'https://loyaltyprogram.herokuapp.com/users',
+//              accepts: {
+//                dataType: 'application/json',
+//              },
+//              contentType: 'application/json',
+//              method: 'POST',
+//              data: JSON.stringify(uid),
+//              success: function(r) { 
+//                console.log("whatever");
+//              } 
+//     });
+//     fetch('https://loyaltyprogram.herokuapp.com/users', {
+//      headers: {
+//        'Accept': 'application/json',
+//        'Content-Type': 'application/json'
+//      },
+//      method: 'POST',
+//      body: JSON.stringify(uid)
+//    })
+//    .then((response) => {
+//      return response.json()})
+//    .then((responseJson) => {
+//      if (responseJson.covered === "yes") {
+//        // render pay with loyalties page
+//        // send back covered, amount_due, vault_id
+//
+//      } else if (responseJson.covered === "no") {
+//        // render tap to pay
+//      } else {
+//        // render Your account has been created and rewards have been updated
+//      }
+//    })
+//    .catch((error) => {
+//      console.error(error);
+//    });
+     console.log("made it");
    }
 
    function isCustomerLoyal () {
@@ -97,6 +123,31 @@ var service = tetra.startEnd()
        .close()
        .disconnect()
    }
+   
+   function amIWaiting() {
+     return $('#waiting').hasClass('hidden') ? false : true;
+   }
+   
+   // stretch
+   
+//   function loadAnimation() {
+//     // You know
+//     $('#P').animate({
+//       color: "black",
+//       transform: scale(0.95)
+//     })
+//   }
+//   
+//   $(document).on({
+//     ajaxStart: function() {
+//       showView("waiting");
+//       do {
+//         loadAnimation();
+//       } while amIWaiting();
+//     },
+//     ajaxStop: function() {
+//     }
+//   });
    
    contactLessService     
      .reset() // Reset service     
