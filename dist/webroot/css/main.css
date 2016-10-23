@@ -1,3 +1,20 @@
+* {
+  font-family: sans-serif;
+  font-weight: bold;
+}
+
+body {
+  background-color: #6495ed;
+}
+
 .hidden {
   display: none;
+}
+
+.prompt {
+  font-size: 2em;
+}
+
+#opt-out {
+  background-color: red;
 }

@@ -1,6 +1,7 @@
 {
   "last.page": "page:web.app.conf.weblet",
   "profiling": [
+    "PunchCard",
     "Punch Card"
   ]
 }

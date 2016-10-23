@@ -21,10 +21,10 @@ var service = tetra.startEnd()
      console.log(uid);
    }
    
-//   function moveOn() {
-//     service.sendResponse();
-//     tetra.weblet.hide();
-//   }
+   function moveOn() {
+     service.sendResponse();
+     tetra.weblet.hide();
+   }
    
    function isCustomerLoyal () {
      // Using our API
@@ -33,10 +33,9 @@ var service = tetra.startEnd()
    function punchCard(r) {
      var number = uidFormat(r['uid']);
      console.log(number);
-     window.print();
-     service.sendResponse();
-     tetra.weblet.hide();
-//     moveOn();
+//     service.sendResponse();
+//     tetra.weblet.hide();
+     moveOn();
    }
    
    function getCardInformations() {
@@ -45,6 +44,8 @@ var service = tetra.startEnd()
        .call('GetUid', {requestDelay: 250}) //Call GetUid method
        .success(function(r) {
           punchCard(r);
+//          service.sendResponse();
+//          tetra.weblet.hide();
        })
        .close()
        .disconnect()
