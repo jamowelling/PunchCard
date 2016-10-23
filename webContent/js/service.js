@@ -33,6 +33,14 @@ var service = tetra.startEnd()
      tetra.weblet.hide();
    }
    
+   function showView(dView) {
+     var views = ["recognize", "redeem", "no-account-found", "phone-number-input", "waiting"];
+     
+     for (v = 0; v < views.length; v++) {
+       document.getElementById(views[v]).className = (dView == views[v] ? "" : "hidden");
+     }
+   }
+   
 //   document.getElementById("opt-out").addEventListener("mouseup", function(e) {
 //     moveOn();
 //   });
@@ -47,6 +55,17 @@ var service = tetra.startEnd()
    function uidFormat(uidArr) {
      var uid = uidArr.join("");
      console.log(uid);
+     $.ajax({ url: 'https://loyaltyprogram.herokuapp.com/users',
+              accepts: {
+                dataType: 'application/json',
+              },
+              contentType: 'application/json',
+              method: 'POST',
+              data: JSON.stringify(uid),
+              success: function(r) { 
+                console.log("whatever");
+              } 
+     });
 //     fetch('https://loyaltyprogram.herokuapp.com/users', {
 //      headers: {
 //        'Accept': 'application/json',
