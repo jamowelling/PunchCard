@@ -9,6 +9,15 @@ var service = tetra.startEnd()
  else {
   tetra.weblet.show();
    
+   function moveOn() {
+     service.sendResponse();
+     tetra.weblet.hide();
+   }
+   
+   document.getElementById("opt-out").addEventListener("mouseup", function(e) {
+     moveOn();
+   });
+   
    // Get Uid
    
    var contactLessService = tetra.service({ // Instantiate service
@@ -19,11 +28,6 @@ var service = tetra.startEnd()
    function uidFormat(uidArr) {
      var uid = uidArr.join("");
      console.log(uid);
-   }
-   
-   function moveOn() {
-     service.sendResponse();
-     tetra.weblet.hide();
    }
    
    function isCustomerLoyal () {
