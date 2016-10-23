@@ -34,3 +34,26 @@ button {
 #opt-out {
   background-color: red;
 }
+
+#logo {
+  margin: 0 auto;
+  left: 20px;
+  top: 20px;
+  height: 440px;
+  width: 280px;
+  border-radius: 7%;
+  background-color: limegreen;
+  color: limegreen;
+  display: block;
+  position: absolute;
+}
+
+.logo-letter {
+  display: block;
+  font-size: 6em;
+  color: black;
+}
+
+#P, #C {
+  padding-top: 20%;
+}

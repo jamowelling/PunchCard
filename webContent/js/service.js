@@ -9,24 +9,24 @@ var service = tetra.startEnd()
  else {
   tetra.weblet.show();
    
-   function updateLoyaltyPoints(covered, amountDue, vaultID) {
-     fetch('https://loyaltyprogram.herokuapp.com/memberships', {
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      },
-      method: 'POST',
-      body: JSON.stringify(covered, amountDue, vaultId)
-    })
-    .then((response) => {
-      return response.json()})
-    .then((responseJson) => {
-      return responseJson.complete
-    })
-    .catch((error) => {
-      console.error(error);
-    }); 
-   }
+//   function updateLoyaltyPoints(covered, amountDue, vaultID) {
+//     fetch('https://loyaltyprogram.herokuapp.com/memberships', {
+//      headers: {
+//        'Accept': 'application/json',
+//        'Content-Type': 'application/json'
+//      },
+//      method: 'POST',
+//      body: JSON.stringify(covered, amountDue, vaultId)
+//    })
+//    .then((response) => {
+//      return response.json()})
+//    .then((responseJson) => {
+//      return responseJson.complete
+//    })
+//    .catch((error) => {
+//      console.error(error);
+//    }); 
+//   }
 
    function moveOn() {
      service.sendResponse();
@@ -47,30 +47,30 @@ var service = tetra.startEnd()
    function uidFormat(uidArr) {
      var uid = uidArr.join("");
      console.log(uid);
-     fetch('https://loyaltyprogram.herokuapp.com/users', {
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      },
-      method: 'POST',
-      body: JSON.stringify(uid)
-    })
-    .then((response) => {
-      return response.json()})
-    .then((responseJson) => {
-      if (responseJson.covered === "yes") {
-        // render pay with loyalties page
-        // send back covered, amount_due, vault_id
-
-      } else if (responseJson.covered === "no") {
-        // render tap to pay
-      } else {
-        // render Your account has been created and rewards have been updated
-      }
-    })
-    .catch((error) => {
-      console.error(error);
-    });
+//     fetch('https://loyaltyprogram.herokuapp.com/users', {
+//      headers: {
+//        'Accept': 'application/json',
+//        'Content-Type': 'application/json'
+//      },
+//      method: 'POST',
+//      body: JSON.stringify(uid)
+//    })
+//    .then((response) => {
+//      return response.json()})
+//    .then((responseJson) => {
+//      if (responseJson.covered === "yes") {
+//        // render pay with loyalties page
+//        // send back covered, amount_due, vault_id
+//
+//      } else if (responseJson.covered === "no") {
+//        // render tap to pay
+//      } else {
+//        // render Your account has been created and rewards have been updated
+//      }
+//    })
+//    .catch((error) => {
+//      console.error(error);
+//    });
    }
 
    function isCustomerLoyal () {
