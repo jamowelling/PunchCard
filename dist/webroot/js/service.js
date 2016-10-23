@@ -9,6 +9,15 @@ var service = tetra.startEnd()
  else {
   tetra.weblet.show();
    
+   function moveOn() {
+     service.sendResponse();
+     tetra.weblet.hide();
+   }
+   
+   document.getElementById("opt-out").addEventListener("mouseup", function(e) {
+     moveOn();
+   });
+   
    // Get Uid
    
    var contactLessService = tetra.service({ // Instantiate service
@@ -21,11 +30,6 @@ var service = tetra.startEnd()
      console.log(uid);
    }
    
-//   function moveOn() {
-//     service.sendResponse();
-//     tetra.weblet.hide();
-//   }
-   
    function isCustomerLoyal () {
      // Using our API
    }
@@ -33,10 +37,9 @@ var service = tetra.startEnd()
    function punchCard(r) {
      var number = uidFormat(r['uid']);
      console.log(number);
-     window.print();
-     service.sendResponse();
-     tetra.weblet.hide();
-//     moveOn();
+//     service.sendResponse();
+//     tetra.weblet.hide();
+     moveOn();
    }
    
    function getCardInformations() {
@@ -45,6 +48,8 @@ var service = tetra.startEnd()
        .call('GetUid', {requestDelay: 250}) //Call GetUid method
        .success(function(r) {
           punchCard(r);
+//          service.sendResponse();
+//          tetra.weblet.hide();
        })
        .close()
        .disconnect()
