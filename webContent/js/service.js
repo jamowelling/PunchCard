@@ -108,7 +108,7 @@ var service = tetra.startEnd()
       console.log('Card detected');
       return getCardInformations();
      })     
-     .call('StartDetection', {data: {timeout: 10000}}) // Call start detection method
+     .call('StartDetection', {data: {timeout: 60000}}) // Call start detection method
      .then(function (r) {        
           console.log('Please approach your card');     
       }, function (e) {        
