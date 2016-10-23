@@ -12,27 +12,25 @@
   
   <body>
     
-    <div id="listening">
-      <div class="content">
-        <div class="prompt">
-          <p>Tap your card to snag some rewards!</p>
-          <!-- Instructional graphic here? -->
-          <button id="opt-out">I don't wanna</button>
-        </div>
-      </div>
-    </div>
-    
-    <div id="on-start" class="hidden">
-      <div class="content">
-        <div class="prompt">
-          <p>Tap your card to snag some rewards</p>
+    <div id="on-start">
+        
+        <div id="recognize" class="hidden">
+          <p>Tap to recognize</p>
           <!-- Instructional graphic here? -->
         </div>
-        <button id="the_button">Try Me</button>
-        <button>My card doesn't seem to be working :/</button>
-      </div>
+        
+        <div id="recognize" class="">
+          <div class="prompt">
+            <p>Would you like to redeem your points to cover this purchase?</p>
+          </div>
+          <div class="buttons">
+            <button class="positive">yes</button>
+            <button class="negative">no</button>
+          </div>
+        </div>
+        
     </div>
-    
+
   </body>
   
   <script type='text/javascript' src='js/tetra.js'></script>

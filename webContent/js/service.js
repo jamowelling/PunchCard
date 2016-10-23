@@ -14,9 +14,9 @@ var service = tetra.startEnd()
      tetra.weblet.hide();
    }
    
-   document.getElementById("opt-out").addEventListener("mouseup", function(e) {
-     moveOn();
-   });
+//   document.getElementById("opt-out").addEventListener("mouseup", function(e) {
+//     moveOn();
+//   });
    
    // Get Uid
    
