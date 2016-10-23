@@ -12,27 +12,44 @@
   
   <body>
     
-    <div id="listening">
-      <div class="content">
+    <div id="on-start">
+        
+      <div id="recognize" class="">
+        <p>Tap to recognize</p>
+        <!-- Instructional graphic here? -->
+      </div>
+        
+      <div id="recognize" class="hidden">
         <div class="prompt">
-          <p>Tap your card to snag some rewards!</p>
-          <!-- Instructional graphic here? -->
-          <button id="opt-out">I don't wanna</button>
+          <p>Would you like to redeem your points to cover this purchase?</p>
+        </div>
+        <div class="buttons">
+          <button class="positive">yes</button>
+          <button class="negative">no</button>
         </div>
       </div>
-    </div>
-    
-    <div id="on-start" class="hidden">
-      <div class="content">
+      
+      <div id="no-account-found" class="hidden">
         <div class="prompt">
-          <p>Tap your card to snag some rewards</p>
-          <!-- Instructional graphic here? -->
+          <p>Collect 200 loyalty points?</p>
         </div>
-        <button id="the_button">Try Me</button>
-        <button>My card doesn't seem to be working :/</button>
+        <div class="buttons">
+          <button class="positive">yes</button>
+          <button class="negative">no</button>
+        </div>
       </div>
+      
+      <div id="phone-number-input" class="hidden">
+        <prompt>
+          <p>Phone Number:</p>
+        </prompt>
+        <form>
+          <input type="tel" name="usrtel">
+        </form>
+      </div>
+        
     </div>
-    
+
   </body>
   
   <script type='text/javascript' src='js/tetra.js'></script>
